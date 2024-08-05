@@ -1,0 +1,20 @@
+.toDoFormSection {
+    max-width: 300px;
+}
+
+.authorInput {
+    width: 120px;
+    margin: 10px;
+}
+
+#toDoText {
+    resize: none;
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+}

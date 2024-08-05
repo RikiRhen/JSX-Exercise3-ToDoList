@@ -35,9 +35,11 @@ export function ToDo({ toDo, completeToDo, removeToDo }: IToDoProps): ReactEleme
         <article className="toDoItem">
             <p className="author">{toDo.author}</p>
             <p className="timestamp">{toDo.timestamp}</p>
-            <p className="ToDoTaskText" id={`toDoId-${toDoId}`}>{toDo.task}</p>
-            <button className="completeButton" onClick={handleCompleteClick}>Complete</button>
-            <button className="removeButton" onClick={handleRemoveClick}>Delete task</button>
+            <p className="toDoTaskText" id={`toDoId-${toDoId}`}>{toDo.task}</p>
+            <div className="buttonDiv">
+                <button className="btn" id="completeButton" onClick={handleCompleteClick}>Complete</button>
+                <button className="btn" id="removeButton" onClick={handleRemoveClick}>Delete task</button>
+            </div>
         </article>
     )
 }

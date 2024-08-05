@@ -9,7 +9,7 @@ export function App() {
   const [completedToDoList, setCompletedToDoList] = useState<IToDo[]>([]);
   const date = new Date();
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const timestamp = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+  const timestamp = `${date.getHours()}:${date.getMinutes()}, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 
   function addToDo(toDo: IToDo): void {
     const updatedList: IToDo[] = toDoList.concat([toDo]);

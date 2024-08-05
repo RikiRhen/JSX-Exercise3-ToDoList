@@ -2,6 +2,7 @@
 
 import { ChangeEventHandler, MouseEventHandler, ReactElement, useState } from "react";
 import { IToDo } from "..";
+import "./AddToDo.css";
 
 interface IAddToDoProps {
     addToDo: (toDo: IToDo) => void;
@@ -42,7 +43,7 @@ export function AddToDo(props: IAddToDoProps): ReactElement {
                     <input type="text" className="authorInput" placeholder="Author..." onChange={handleAuthorOnChange} value={inputAuthorValue}/>
                 </div>
                 <div className="textAreaDiv">
-                    <textarea name="toDo" id="toDoText" placeholder="ToDo..." onChange={handleTaskOnChange} value={inputTaskValue}></textarea>
+                    <textarea className="taskText" id="toDoText" placeholder="ToDo..." onChange={handleTaskOnChange} value={inputTaskValue}></textarea>
                 </div>
                 <div className="buttonDiv">
                     <button className="addToDoButton" onClick={handleOnSubmit}>Add</button>
