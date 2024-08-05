@@ -1,0 +1,5 @@
+.toDoList{
+    display:flex;
+    max-width: 900px;
+    flex-wrap: wrap;
+}
