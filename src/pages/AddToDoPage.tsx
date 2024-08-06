@@ -1,31 +1,40 @@
-//Form to create a new ToDo component
-
 import { ChangeEventHandler, MouseEventHandler, ReactElement, useState } from "react";
 import { IToDo } from "..";
-import "../css/AddToDo.css";
-
-interface IAddToDoProps {
-    addToDo: (toDo: IToDo) => void;
-    idCounter: number;
-}
+import { useToDoContext } from "../hooks";
+import "../css/AddToDoPage.css"
+import { useNavigate } from "react-router-dom";
 
 
-export function AddToDo(props: IAddToDoProps): ReactElement {
+
+
+export function AddToDoPage(): ReactElement {
     const [inputTaskValue, setInputTaskValue] = useState<string>("");
     const [inputAuthorValue, setInputAuthorValue] = useState<string>("");
+    const { addToDo, idCounter } = useToDoContext();
     const timestamp = new Date().toLocaleDateString();
+    const navigate = useNavigate();
 
-    const handleOnSubmit: MouseEventHandler<HTMLButtonElement> = (e) => {
-        e.preventDefault();
+    function addTask() {
         let item: IToDo = {
-            id: props.idCounter,
+            id: idCounter,
             author: inputAuthorValue,
             task: inputTaskValue,
             timestamp
         }
-        props.addToDo(item);
+        addToDo(item);
         setInputTaskValue("");
         setInputAuthorValue("");
+    }
+
+    const handleOnSubmit: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault();
+        addTask();
+        navigate("/");
+    }
+
+    const handleOnAnotherSubmit: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault();
+        addTask();
     }
 
     const handleTaskOnChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
@@ -46,8 +55,10 @@ export function AddToDo(props: IAddToDoProps): ReactElement {
                     <textarea className="taskText" id="toDoText" placeholder="ToDo..." onChange={handleTaskOnChange} value={inputTaskValue}></textarea>
                 </div>
                 <div className="buttonDiv">
+                    <button className="addToDoButton" onClick={handleOnAnotherSubmit}>Add another ToDo</button>
                     <button className="addToDoButton" onClick={handleOnSubmit}>Add</button>
                 </div>
+
             </form>
         </section>
     )

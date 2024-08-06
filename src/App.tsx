@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { AddToDo, IToDo, ListToDo } from "./index";
+import { Header, IToDo, IToDoContext } from "./index";
 
-import "./App.css";
-let idCounter = 0;
+import "./css/App.css";
+import { Outlet } from "react-router-dom";
+// let idCounter = 0;
+
+//########TEST VARIABLES#########
+let idCounter = 2;
+const timestamp = new Date().toLocaleDateString();
 
 export function App() {
-  const [toDoList, setToDoList] = useState<IToDo[]>([]);
+  const [toDoList, setToDoList] = useState<IToDo[]>([{ author: "Riki", id: 0, task: "Test 1", timestamp }, { author: "Riki", id: 1, task: "Test 2", timestamp }]);
   const [completedToDoList, setCompletedToDoList] = useState<IToDo[]>([]);
-  const date = new Date();
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const timestamp = `${date.getHours()}:${date.getMinutes()}, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+
 
   function addToDo(toDo: IToDo): void {
     const updatedList: IToDo[] = toDoList.concat([toDo]);
@@ -29,14 +32,24 @@ export function App() {
     setToDoList(updatedToDoList);
   }
 
+  const toDoContext: IToDoContext = {
+    toDos: toDoList,
+    idCounter,
+    addToDo,
+    completeToDo,
+    removeToDo
+  }
+
   return (
     <>
-      <h1>AddToDo component</h1>
-      <AddToDo addToDo={addToDo} idCounter={idCounter} timestamp={timestamp} />
+      {/* <h1>AddToDo component</h1>
+      <AddToDo addToDo={addToDo} idCounter={idCounter} />
       <h1>List of ToDo's</h1>
-      <ListToDo toDoList={toDoList} id={idCounter} completeToDo={completeToDo} removeToDo={removeToDo} timestamp={timestamp} />
+      <ListToDo toDoList={toDoList} id={idCounter} completeToDo={completeToDo} removeToDo={removeToDo} />
       <h1>List of completed ToDo's</h1>
-      <ListToDo toDoList={completedToDoList} id={idCounter} completeToDo={completeToDo} removeToDo={removeToDo} timestamp={timestamp} />
+      <ListToDo toDoList={completedToDoList} id={idCounter} completeToDo={completeToDo} removeToDo={removeToDo} /> */}
+      <Header />
+      <Outlet context={toDoContext} />
     </>
   );
 }

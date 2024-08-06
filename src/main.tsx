@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./App.tsx";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router.tsx";
 
 /*
   ############# STEP 1 #############
@@ -14,10 +16,18 @@ import { App } from "./App.tsx";
 
   COMPONENTS NEEDED:
   ToDo, List of ToDo's, List of completed ToDo's, Form to create new ToDo's, Buttons for add, complete and remove.
+
+  ############# STEP 2 #############
+
+  1) Seperate out the page from adding new ToDo's   ###DONE###
+  2) Seperate out an "about" page, shows purpose of the list and the ammount of ToDo's    ###DONE###
+
+  COMPONENTS NEEDED:
+  Pages for AddToDo and About, new About component, Router
 */
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
