@@ -1,5 +1,3 @@
-//The actual ToDo component
-
 import { MouseEventHandler, ReactElement } from "react";
 import { IToDo } from "../interfaces";
 import "../css/ToDo.css";

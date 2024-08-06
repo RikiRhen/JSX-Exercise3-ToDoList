@@ -3,9 +3,9 @@ import { Header, IToDo, IToDoContext } from "./index";
 
 import "./css/App.css";
 import { Outlet } from "react-router-dom";
-// let idCounter = 0; // <-- is the actual variable to use for final implementation.
+// let idCounter = 0; // <-- is the actual variable to use for final implementation when all test cases are cleared out.
 
-//########TEST VARIABLES#########
+//########TEST VARIABLES#########   <-- This section is to be deleted for final implementation when all test cases are cleared out.
 let idCounter = 2;
 const timestamp = new Date().toLocaleDateString();
 //###############################

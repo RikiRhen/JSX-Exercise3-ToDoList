@@ -4,9 +4,6 @@ import { useToDoContext } from "../hooks";
 import "../css/AddToDoPage.css"
 import { useNavigate } from "react-router-dom";
 
-
-
-
 export function AddToDoPage(): ReactElement {
     const [inputTaskValue, setInputTaskValue] = useState<string>("");
     const [inputAuthorValue, setInputAuthorValue] = useState<string>("");

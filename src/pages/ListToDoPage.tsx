@@ -15,6 +15,5 @@ export function ListToDoPage(): ReactElement {
                 ))}
             </div>
         </section>
-
     );
 }
