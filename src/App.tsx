@@ -13,6 +13,7 @@ const timestamp = new Date().toLocaleDateString();
 export function App() {
   const [toDoList, setToDoList] = useState<IToDo[]>([{ author: "Riki", id: 0, task: "Test 1", timestamp }, { author: "Riki", id: 1, task: "Test 2", timestamp }]);
   const [completedToDoList, setCompletedToDoList] = useState<IToDo[]>([]);
+  let taskCounter = toDoList.length;
 
 
   function addToDo(toDo: IToDo): void {
@@ -36,6 +37,7 @@ export function App() {
   const toDoContext: IToDoContext = {
     toDos: toDoList,
     idCounter,
+    taskCounter,
     addToDo,
     completeToDo,
     removeToDo
