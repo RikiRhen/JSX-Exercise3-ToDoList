@@ -1,19 +1,30 @@
 import { ReactElement } from "react";
-import { ToDo, IToDo } from "../index";
+import { ToDo, IToDo, CompletedToDo } from "../index";
 import { useToDoContext } from "../hooks";
 import "../css/ListToDoPage.css";
 
 export function ListToDoPage(): ReactElement {
-    const { toDos, completeToDo, removeToDo } = useToDoContext();
+    const { toDos, completedToDos } = useToDoContext();
 
     return (
-        <section className="listToDoSection">
-            <h1>List of ToDo's</h1>
-            <div className="toDoList">
-                {toDos.map((toDo: IToDo) => (
-                    <ToDo key={toDo.id} id={toDo.id} toDo={toDo} completeToDo={completeToDo} removeToDo={removeToDo} />
-                ))}
+        <section className="toDoListsSection">
+            <div className="listToDoDiv">
+                <h1>ToDo's</h1>
+                <div className="toDoList">
+                    {toDos.map((toDo: IToDo) => (
+                        <ToDo key={toDo.id} toDo={toDo} />
+                    ))}
+                </div>
+            </div>
+            <div className="listCompletedDiv">
+                <h1>Finished Tasks</h1>
+                <div className="completedList">
+                    {completedToDos.map((toDo: IToDo) => (
+                        <CompletedToDo key={toDo.id} toDo={toDo} />
+                    ))}
+                </div>
             </div>
         </section>
+
     );
 }

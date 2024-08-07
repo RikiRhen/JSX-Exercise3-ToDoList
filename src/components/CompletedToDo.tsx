@@ -7,14 +7,9 @@ interface IToDoProps {
     toDo: IToDo;
 }
 
-export function ToDo({ toDo }: IToDoProps): ReactElement {
-    const { completeToDo, removeToDo } = useToDoContext();
+export function CompletedToDo({ toDo }: IToDoProps): ReactElement {
+    const { removeToDo } = useToDoContext();
     const toDoId = (toDo.id).toString();
-
-    const handleCompleteClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-        e.preventDefault();
-        completeToDo(toDo);
-    }
 
     const handleRemoveClick: MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault();
@@ -28,7 +23,6 @@ export function ToDo({ toDo }: IToDoProps): ReactElement {
             <p className="toDoTaskText" id={`toDoId-${toDoId}`}>{toDo.task}</p>
             <div className="buttonDiv">
                 <button className="btn" id="removeButton" onClick={handleRemoveClick}>Delete</button>
-                <button className="btn" id="completeButton" onClick={handleCompleteClick}>Complete</button>
             </div>
         </article>
     )

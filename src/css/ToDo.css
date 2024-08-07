@@ -1,12 +1,16 @@
 .toDoItem {
     width: 200px;
     height: fit-content;
-    border: black solid 2px;
+    border: rgb(255, 173, 96) solid 2px;
     border-radius: 5px;
     margin: 10px;
 
+    &:hover {
+        cursor: move;
+    }
+
     & .timestamp {
-        border-bottom: black solid 1px;
+        border-bottom: rgb(255, 173, 96) solid 1px;
     }
 
     & .toDoTaskText {
@@ -25,5 +29,27 @@
 
     & .btn {
         margin: 10px;
+        border-radius: 5px;
+        padding: 5px;
+        border: 0;
+        transition: 0.3s;
+
+        &#removeButton {
+            background-color: rgb(255, 173, 96);
+
+            &:hover {
+                background-color: rgb(180, 103, 30);
+                cursor: pointer;
+            }
+        }
+
+        &#completeButton {
+            background-color: rgb(150, 206, 180);
+
+            &:hover {
+                background-color: rgb(27, 121, 77);
+                cursor: pointer;
+            }
+        }
     }
 }

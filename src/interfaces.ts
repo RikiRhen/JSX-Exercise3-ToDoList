@@ -7,6 +7,7 @@ export interface IToDo {
 
 export interface IToDoContext {
     toDos: IToDo[];
+    completedToDos: IToDo[];
     idCounter: number;
     taskCounter: number;
     addToDo: (toDo: IToDo) => void;

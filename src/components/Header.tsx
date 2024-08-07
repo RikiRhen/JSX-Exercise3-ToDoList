@@ -5,7 +5,7 @@ import "../css/Header.css";
 export function Header(): ReactElement {
     return (
         <header className="header">
-            <h1 className="logo">ToDo Compilator</h1>
+            <h1 className="headline">ToDo Compilator</h1>
             <div className="links">
                 <Link to="/about" className="link">
                     About

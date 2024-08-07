@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Header, IToDo, IToDoContext } from "./index";
+import { Header, IToDo, IToDoContext, } from "./index";
 
 import "./css/App.css";
 import { Outlet } from "react-router-dom";
@@ -31,11 +31,14 @@ export function App() {
 
   function removeToDo(removeToDo: IToDo): void {
     const updatedToDoList: IToDo[] = toDoList.filter((toDo) => toDo.id !== removeToDo.id)
+    const updatedCompletedToDoList: IToDo[] = completedToDoList.filter((toDo) => toDo.id !== removeToDo.id)
     setToDoList(updatedToDoList);
+    setCompletedToDoList(updatedCompletedToDoList);
   }
 
   const toDoContext: IToDoContext = {
     toDos: toDoList,
+    completedToDos: completedToDoList,
     idCounter,
     taskCounter,
     addToDo,
