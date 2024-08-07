@@ -1,7 +1,7 @@
 import { MouseEventHandler, ReactElement } from "react";
 import { IToDo } from "../interfaces";
 import { useToDoContext } from "../hooks";
-import "../css/ToDo.css";
+import "../css/CompletedToDo.css";
 
 interface IToDoProps {
     toDo: IToDo;
@@ -17,7 +17,7 @@ export function CompletedToDo({ toDo }: IToDoProps): ReactElement {
     }
 
     return (
-        <article className="toDoItem">
+        <article className="completedToDoItem">
             <p className="author">{toDo.author}</p>
             <p className="timestamp">{toDo.timestamp}</p>
             <p className="toDoTaskText" id={`toDoId-${toDoId}`}>{toDo.task}</p>

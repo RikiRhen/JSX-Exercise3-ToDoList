@@ -1,0 +1,8 @@
+.aboutSection {
+    min-height: 150px;
+
+    & h1,
+    p {
+        margin: 20px;
+    }
+}

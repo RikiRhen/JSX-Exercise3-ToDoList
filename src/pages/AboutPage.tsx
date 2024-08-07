@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useToDoContext } from "../hooks";
-
+import "../css/AboutPage.css";
 
 export function AboutPage(): ReactElement {
     const { taskCounter } = useToDoContext();
