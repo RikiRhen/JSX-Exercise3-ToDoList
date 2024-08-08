@@ -36,6 +36,26 @@ export function App() {
     setCompletedToDoList(updatedCompletedToDoList);
   }
 
+  function moveUp(id: number) {
+    const index = toDoList.findIndex((toDo) => toDo.id === id);
+    if (index > 0) {
+      const [item] = toDoList.splice(index, 1);
+      const newArray: IToDo[] = Array.from(toDoList);
+      newArray.splice(index - 1, 0, item);
+      setToDoList(newArray);
+    }
+  }
+
+  function moveDown(id: number) {
+    const index = toDoList.findIndex((toDo) => toDo.id === id)
+    if (index < toDoList.length - 1) {
+      const [item] = toDoList.splice(index, 1);
+      const newArray: IToDo[] = Array.from(toDoList);
+      newArray.splice(index + 1, 0, item);
+      setToDoList(newArray);
+    }
+  }
+
   const toDoContext: IToDoContext = {
     toDos: toDoList,
     completedToDos: completedToDoList,
@@ -43,7 +63,9 @@ export function App() {
     taskCounter,
     addToDo,
     completeToDo,
-    removeToDo
+    removeToDo,
+    moveUp,
+    moveDown
   }
 
   return (

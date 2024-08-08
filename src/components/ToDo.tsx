@@ -8,7 +8,7 @@ interface IToDoProps {
 }
 
 export function ToDo({ toDo }: IToDoProps): ReactElement {
-    const { completeToDo, removeToDo } = useToDoContext();
+    const { completeToDo, removeToDo, moveUp, moveDown } = useToDoContext();
     const toDoId = (toDo.id).toString();
 
     const handleCompleteClick: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -21,8 +21,22 @@ export function ToDo({ toDo }: IToDoProps): ReactElement {
         removeToDo(toDo);
     }
 
+    const handleMoveUp: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault();
+        moveUp(toDo.id);
+    }
+
+    const handleMoveDown: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault();
+        moveDown(toDo.id);
+    }
+
     return (
         <article className="toDoItem">
+            <div className="priorityButtons">
+                <button className="btn" id="moveUpButton" onClick={handleMoveUp}>{`<`}</button>
+                <button className="btn" id="moveDownButton" onClick={handleMoveDown}>{`>`}</button>
+            </div>
             <p className="author">{toDo.author}</p>
             <p className="timestamp">{toDo.timestamp}</p>
             <p className="toDoTaskText" id={`toDoId-${toDoId}`}>{toDo.task}</p>

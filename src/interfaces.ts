@@ -13,4 +13,6 @@ export interface IToDoContext {
     addToDo: (toDo: IToDo) => void;
     completeToDo: (toDo: IToDo) => void;
     removeToDo: (toDo: IToDo) => void;
+    moveUp: (id: number) => void;
+    moveDown: (id:number) => void;
 }

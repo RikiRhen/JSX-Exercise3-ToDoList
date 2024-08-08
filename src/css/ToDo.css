@@ -27,19 +27,31 @@
         justify-content: space-evenly;
     }
 
+    & .priorityButtons {
+        display: flex;
+        justify-content: space-between;
+    }
+
     & .btn {
         margin: 10px;
         border-radius: 5px;
         padding: 5px;
         border: 0;
         transition: 0.3s;
+        min-width: 30px;
+        background-color: rgb(255, 173, 96);
+
+        &:hover {
+            background-color: rgb(180, 103, 30);
+            cursor: pointer;
+        }
 
         &#removeButton {
-            background-color: rgb(255, 173, 96);
+            background-color: rgb(255, 74, 98);
 
             &:hover {
-                background-color: rgb(180, 103, 30);
-                cursor: pointer;
+                background-color: rgb(255, 18, 49);
+                ;
             }
         }
 
@@ -48,7 +60,6 @@
 
             &:hover {
                 background-color: rgb(27, 121, 77);
-                cursor: pointer;
             }
         }
     }
