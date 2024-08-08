@@ -6,12 +6,12 @@ import { Outlet } from "react-router-dom";
 // let idCounter = 0; // <-- is the actual variable to use for final implementation when all test cases are cleared out.
 
 //########TEST VARIABLES#########   <-- This section is to be deleted for final implementation when all test cases are cleared out.
-let idCounter = 3;
+let idCounter = 4;
 const timestamp = new Date().toLocaleDateString();
 //###############################
 
 export function App() {
-  const [toDoList, setToDoList] = useState<IToDo[]>([{ author: "Riki", id: 1, task: "Test 1", timestamp }, { author: "Riki", id: 2, task: "Test 2", timestamp }]); // <-- test cases, empty out for final deployment.
+  const [toDoList, setToDoList] = useState<IToDo[]>([{ author: "Riki", id: 1, task: "Test 1", timestamp }, { author: "Riki", id: 2, task: "Test 2", timestamp }, { author: "Adam", id: 3, task: "Test 3", timestamp }]); // <-- test cases, empty out for final deployment.
   const [completedToDoList, setCompletedToDoList] = useState<IToDo[]>([{ author: "Riki", id: 0, task: "Completed task test", timestamp }]);  // <-- test case, empty out for final deployment.
   let taskCounter = toDoList.length;
 
@@ -56,6 +56,35 @@ export function App() {
     }
   }
 
+  function sortByAuthor(): void {
+    const newArray = Array.from(toDoList);
+    newArray.sort((a, b) => {
+      if (a.author < b.author) {
+        return -1;
+      } else if (a.author > b.author) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    setToDoList(newArray);
+  }
+
+  //Technically was asked to sort by Timestamp but the ID is simpler and has identical effect.
+  function sortById(): void {
+    const newArray = Array.from(toDoList);
+    newArray.sort((a, b) => {
+      if (a.id < b.id) {
+        return -1;
+      } else if (a.id > b.id) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    setToDoList(newArray);
+  }
+
   const toDoContext: IToDoContext = {
     toDos: toDoList,
     completedToDos: completedToDoList,
@@ -65,7 +94,9 @@ export function App() {
     completeToDo,
     removeToDo,
     moveUp,
-    moveDown
+    moveDown,
+    sortByAuthor,
+    sortById
   }
 
   return (

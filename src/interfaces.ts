@@ -14,5 +14,7 @@ export interface IToDoContext {
     completeToDo: (toDo: IToDo) => void;
     removeToDo: (toDo: IToDo) => void;
     moveUp: (id: number) => void;
-    moveDown: (id:number) => void;
+    moveDown: (id: number) => void;
+    sortByAuthor(): void;
+    sortById(): void;
 }
