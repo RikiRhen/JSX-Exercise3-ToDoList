@@ -5,10 +5,6 @@
     border-radius: 5px;
     margin: 10px;
 
-    &:hover {
-        cursor: move;
-    }
-
     & .timestamp {
         border-bottom: rgb(255, 173, 96) solid 1px;
     }

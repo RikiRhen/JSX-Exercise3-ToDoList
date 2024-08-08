@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement } from "react";
+import { MouseEventHandler, ReactElement, useState } from "react";
 import { IToDo } from "../interfaces";
 import { useToDoContext } from "../hooks";
 import "../css/ToDo.css";
@@ -8,6 +8,8 @@ interface IToDoProps {
 }
 
 export function ToDo({ toDo }: IToDoProps): ReactElement {
+    const [isEditing, setIsEditing] = useState(false);
+    const [taskText, setTaskText] = useState(toDo.task);
     const { completeToDo, removeToDo, moveUp, moveDown } = useToDoContext();
     const toDoId = (toDo.id).toString();
 
@@ -31,18 +33,37 @@ export function ToDo({ toDo }: IToDoProps): ReactElement {
         moveDown(toDo.id);
     }
 
+    const handleEdit = () => {
+        setIsEditing(true);
+    }
+
+    const handleDoneEdit = () => {
+        setIsEditing(false);
+    }
+
     return (
         <article className="toDoItem">
             <div className="priorityButtons">
                 <button className="btn" id="moveUpButton" onClick={handleMoveUp}>{`<`}</button>
+                <button className="btn" id="moveUpButton" onClick={handleEdit}>Edit</button>
                 <button className="btn" id="moveDownButton" onClick={handleMoveDown}>{`>`}</button>
             </div>
             <p className="author">{toDo.author}</p>
             <p className="timestamp">{toDo.timestamp}</p>
-            <p className="toDoTaskText" id={`toDoId-${toDoId}`}>{toDo.task}</p>
+            <div className="toDoTaskText" id={`toDoId-${toDoId}`}>
+                {isEditing ?
+                    (<textarea value={taskText} onChange={(e) => setTaskText(e.target.value)} />) :
+                    (<p>{taskText}</p>)}
+            </div>
             <div className="buttonDiv">
-                <button className="btn" id="removeButton" onClick={handleRemoveClick}>Delete</button>
-                <button className="btn" id="completeButton" onClick={handleCompleteClick}>Complete</button>
+                {isEditing ? (
+                    <button className="btn" id="saveButton" onClick={handleDoneEdit}>Done</button>
+                ) : (
+                    <>
+                        <button className="btn" id="removeButton" onClick={handleRemoveClick}>Delete</button>
+                        <button className="btn" id="completeButton" onClick={handleCompleteClick}>Complete</button>
+                    </>
+                )}
             </div>
         </article>
     )
